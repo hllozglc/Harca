@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/route_manager.dart';
 import 'package:harca/constants/style.dart';
+import 'package:harca/widget/MyDrawer.dart';
+import '../widget/Methods.dart';
+import '../widget/MyListView.dart';
 import '../widget/mainMenuCard.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,16 +13,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: const Text("Ana Sayfa",style: TextStyle(color: Colors.black),),
-        leading: IconButton(onPressed: (){},icon:const Icon(Icons.menu,color: Colors.black,),),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.settings,color: Colors.black,))],
-      ),
+      drawer: MyDrawer(),
+      backgroundColor: Colors.white,
+      appBar: MyAppBar('Ana Sayfa'),
       body:  Column(
         children: [
-          const MainMenuCard(icon:Icons.notifications_outlined,title:'Uyarı Ekle',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1),
-          const MainMenuCard(icon: Icons.filter_alt_outlined, title: 'Harcama Filitrele', text: 'En az harcanan kategori,tarih aralığı,harcanan en yüksek miktar vb.',color: MyColor.cardColor2),
+          MainMenuCard(icon: FontAwesomeIcons.solidBell,title:'Uyarı Ekle',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1,onTap: () => Get.toNamed('/addAlert'),),
+          MainMenuCard(icon: FontAwesomeIcons.filter, title: 'Harcama Filtrele', text: 'En az harcanan kategori,tarih aralığı,harcanan en yüksek miktar vb.',color: MyColor.cardColor2,onTap: () => Get.toNamed('/expenseFilter'),),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
             child: Row(
@@ -29,26 +30,17 @@ class HomePage extends StatelessWidget {
                   fontSize: 12,
                   fontWeight: FontWeight.w200,
                   color: Colors.blue,
+                    ),
+                  ),
                 ),
-                ),)
               ],
             ),
           ),
-          Expanded(child: ListView.builder(
-              itemCount: 10,
-              itemBuilder: (context, index) {
-               return const ListTile(
-                 title: Text('title'),
-                 subtitle: Text('subtitle'),
-                 leading: Icon(Icons.exposure,size: 40,),
-                 trailing: Text('999TL'),
-                );
-              },
-            ),
-          ),
+          const Expanded(child: MyListView()),
         ],
       ),
     );
   }
 }
+
 

@@ -8,6 +8,7 @@
       static const int _titleColor = 0xff0d1b2a;
       static const int _textColor = 0xff003049;
       static const int _navBarIconColor = 0xff5F6F52;
+      static const int _buttonColor = 0xff005B41;
 
       static const Color cardColor1 = Color(_cardColor1);
       static const Color cardColor2 = Color(_cardColor2);
@@ -15,6 +16,7 @@
       static const Color titleColor = Color(_titleColor);
       static const Color textColor = Color(_textColor);
       static const Color navBarIconColor = Color(_navBarIconColor);
+      static const Color buttonColor = Color(_buttonColor);
     }
 
     class MyStyle {

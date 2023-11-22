@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(430, 932),
       builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Harca',
         initialRoute: mainPage,
         getPages: [
           GetPage(name: mainPage, page: () => const MainPage()),

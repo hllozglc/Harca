@@ -6,8 +6,6 @@ import 'package:harca/view/viewAddExpense.dart';
 import 'package:harca/view/viewAllExpense.dart';
 import 'package:harca/view/viewHomePage.dart';
 
-import '../widget/Methods.dart';
-
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -55,7 +53,7 @@ class _MainPageState extends State<MainPage> {
             label: 'Ekle',
             icon: Padding(
               padding: EdgeInsets.all(8.0),
-              child: FaIcon(FontAwesomeIcons.plus,color: MyColor.navBarIconColor),
+              child: FaIcon(FontAwesomeIcons.plus,color: MyColor.navBarIconColor,size: 30,),
             ),
           ),
           BottomNavigationBarItem(

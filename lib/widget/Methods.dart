@@ -4,7 +4,7 @@ import 'package:harca/constants/style.dart';
 
 AppBar MyAppBar(String title) {
   return AppBar(
-    centerTitle: true,
+    centerTitle: true  ,
     iconTheme: const IconThemeData(color: MyColor.iconColor),
     elevation: 0,
     backgroundColor: Colors.white,
@@ -27,11 +27,11 @@ AppBar MyAppBarPage(String title) {
       labelColor: MyColor.textColor,
       tabs: [
       Tab(
-        icon: FaIcon(FontAwesomeIcons.minus,color: Colors.red,),
-        text: "Harca",
+        icon: FaIcon(FontAwesomeIcons.circleDown,color: Colors.red,),
+        text: "Gider",
       ),
       Tab(
-        icon: FaIcon(FontAwesomeIcons.plus,color: Colors.green,),
+        icon: FaIcon(FontAwesomeIcons.circleUp,color: Colors.green,),
         text: "Gelir",
       ),
     ],),

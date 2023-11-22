@@ -17,7 +17,7 @@ class _AllExpenseState extends State<AllExpense> {
     return Scaffold(
       drawer: MyDrawer(),
       backgroundColor: Colors.white,
-      appBar: MyAppBar('Ana Sayfa'),
+      appBar: MyAppBar('Harcamalar'),
       body: const MyListView(),
     );
   }

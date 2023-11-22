@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:harca/constants/style.dart';
 import 'package:harca/view/viewAddExpense.dart';
 import 'package:harca/view/viewAllExpense.dart';
@@ -37,6 +38,8 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: getPages(),
       bottomNavigationBar: BottomNavigationBar(
+        unselectedLabelStyle: GoogleFonts.rubik(fontSize: 12),
+        selectedLabelStyle: GoogleFonts.rubik(fontSize: 16,fontWeight: FontWeight.w500),
         selectedItemColor: MyColor.textColor,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

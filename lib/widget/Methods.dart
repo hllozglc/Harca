@@ -4,6 +4,7 @@ import 'package:harca/constants/style.dart';
 
 AppBar MyAppBar(String title) {
   return AppBar(
+    centerTitle: true,
     iconTheme: const IconThemeData(color: MyColor.iconColor),
     elevation: 0,
     backgroundColor: Colors.white,
@@ -15,6 +16,7 @@ AppBar MyAppBar(String title) {
 
 AppBar MyAppBarPage(String title) {
   return AppBar(
+    centerTitle: true,
     iconTheme: const IconThemeData(color: MyColor.iconColor),
     elevation: 0,
     backgroundColor: Colors.white,

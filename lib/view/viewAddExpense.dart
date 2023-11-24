@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:harca/constants/style.dart';
+import 'package:harca/core/providers/expenseProvider.dart';
+import 'package:harca/models/expenseModel.dart';
 import 'package:harca/widget/Methods.dart';
 import 'package:harca/widget/MyDrawer.dart';
 
 import '../widget/MyTextField.dart';
 
-class AddExpense extends StatefulWidget {
+final initialIndex = Provider<int>((ref) => 0);
+class AddExpense extends ConsumerWidget {
   const AddExpense({super.key});
 
   @override
-  State<AddExpense> createState() => _AddExpenseState();
-}
-
-class _AddExpenseState extends State<AddExpense> {
-
-  @override
-  Widget build(BuildContext context) {
-    return  DefaultTabController(
+  Widget build(BuildContext context , WidgetRef ref) {
+    print(ref.watch(initialIndex));
+    TextEditingController t1 = TextEditingController();
+    TextEditingController t2 = TextEditingController();
+    TextEditingController t3 = TextEditingController();
+    TextEditingController h1 = TextEditingController();
+    TextEditingController h2 = TextEditingController();
+    TextEditingController h3 = TextEditingController();
+    return DefaultTabController(
+      animationDuration: const Duration(milliseconds: 700),
       length: 2,
-      initialIndex: 0,
+      initialIndex: ref.refresh(initialIndex),
       child: Scaffold(
         drawer: MyDrawer(),
         backgroundColor: Colors.white,
@@ -32,15 +38,15 @@ class _AddExpenseState extends State<AddExpense> {
                 SizedBox(height: 10.h),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-                  child: const MytextField(label: 'Harcama Adı',),
+                  child:  MytextField(label: 'Harcama Adı',controller: t1,),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-                  child: const MytextField(label: 'Kategori',),
+                  child:  MytextField(label: 'Kategori',controller: t2,),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-                  child: const MytextField(label: 'Fiyat',),
+                  child:  MytextField(label: 'Fiyat',controller: t3),
                 )
               ],
             ),
@@ -49,15 +55,15 @@ class _AddExpenseState extends State<AddExpense> {
                 SizedBox(height: 10.h),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-                  child: const MytextField(label: 'Gelier Adı',),
+                  child:  MytextField(label: 'Gelir Adı',controller: h1),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-                  child: const MytextField(label: 'Kategori',),
+                  child:  MytextField(label: 'Kategori',controller: h2),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-                  child: const MytextField(label: 'Fiyat',),
+                  child:  MytextField(label: 'Fiyat',controller: h3),
                 )
               ],
             ),
@@ -67,6 +73,10 @@ class _AddExpenseState extends State<AddExpense> {
           backgroundColor: MyColor.iconColor,
           child: const FaIcon(FontAwesomeIcons.plus),
           onPressed: () {
+            print('Eklendi');
+            ref.read(expenseNotifierProvider.notifier).addExpense(ExpenseModel(title: t1.text, subtitle: t2.text, price: double.parse(t3.text)));
+            //ref.read(expenseNotifierProvider.notifier).addExpense(ExpenseModel(title: h1.text, subtitle: h2.text, price: double.parse(h3.text)));
+            Navigator.pushNamed(context, '/');
           },
         ),
       ),

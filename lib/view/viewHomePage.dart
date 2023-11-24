@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/route_manager.dart';
 import 'package:harca/constants/style.dart';
 import 'package:harca/widget/MyDrawer.dart';
 import '../widget/Methods.dart';
@@ -18,8 +17,8 @@ class HomePage extends StatelessWidget {
       appBar: MyAppBar('Ana Sayfa'),
       body:  Column(
         children: [
-          MainMenuCard(icon: FontAwesomeIcons.solidBell,title:'Uyarı Ekle',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1,onTap: () => Get.toNamed('/addAlert'),),
-          MainMenuCard(icon: FontAwesomeIcons.filter, title: 'Harcama Filtrele', text: 'En az harcanan kategori,tarih aralığı,harcanan en yüksek miktar vb.',color: MyColor.cardColor2,onTap: () => Get.toNamed('/expenseFilter'),),
+          MainMenuCard(icon: FontAwesomeIcons.solidBell,title:'Uyarı Ekle',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1,onTap: () => Navigator.pushNamed(context, '/addAlert'),),
+          MainMenuCard(icon: FontAwesomeIcons.filter, title: 'Harcama Filtrele', text: 'En az harcanan kategori,tarih aralığı,harcanan en yüksek miktar vb.',color: MyColor.cardColor2,onTap: () => Navigator.pushNamed(context, '/expenseFilter'),),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
             child: Row(

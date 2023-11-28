@@ -21,7 +21,7 @@
 
     class MyStyle {
       static double horizontalSize = 16.0;
-      static TextStyle? titleStyle() {
+      static TextStyle titleStyle() {
         return GoogleFonts.rubik(
           fontSize: 24,
           fontWeight: FontWeight.w400,

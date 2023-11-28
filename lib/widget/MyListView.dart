@@ -18,7 +18,7 @@ class MyListView extends ConsumerWidget {
           title: Text(model[index].title),
           subtitle: Text(model[index].subtitle),
           leading: model[index].icon,
-          trailing: Text(model[index].price.toString()),
+          trailing: Text('${model[index].price.toString()} TL'),
         );
       },
     );

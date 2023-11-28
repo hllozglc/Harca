@@ -28,7 +28,7 @@ class _AddAlertState extends State<AddAlert> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const FaIcon(FontAwesomeIcons.solidBell,color: MyColor.iconColor,size: 60,),
-            Text('Belli bir gelire veya gidere ulaştığınızda bildirim alın',style: MyStyle.textStyle()),
+            Text('Henüz hiç uyarı eklenmemiş.Belli bir gelire veya gidere ulaştığınızda bildirim almak için hemen uyarı oluşturun',style: MyStyle.textStyle()),
             const MyButton(),
           ],
         ),

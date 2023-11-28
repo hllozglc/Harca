@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:harca/constants/style.dart';
+import 'package:harca/core/providers/bottomNavBarProvider.dart';
 import 'package:harca/core/providers/expenseProvider.dart';
 import 'package:harca/models/expenseModel.dart';
 import 'package:harca/widget/Methods.dart';
@@ -85,11 +86,19 @@ class AddExpense extends ConsumerWidget {
                 if (DefaultTabController.of(context).index == 0) {
                   print('Gider Index: ${DefaultTabController.of(context).index}');
                   ref.read(expenseNotifierProvider.notifier).addExpense(ExpenseModel(title: t1.text, subtitle: t2.text, price: double.parse(t3.text),icon: const FaIcon(FontAwesomeIcons.circleDown,color: Colors.red,size: 35)));
-                  Navigator.pushNamed(context, '/');
+                  ref.watch(bottomNavBarNotifierProvider.notifier).homeRoot();
+                  const snackBar = SnackBar(
+                    backgroundColor: Colors.green,
+                      content: Text('Başarıyla Eklendi'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 } else if (DefaultTabController.of(context).index == 1) {
                   print('Gelir Index: ${DefaultTabController.of(context).index}');
                   ref.read(expenseNotifierProvider.notifier).addExpense(ExpenseModel(title: h1.text, subtitle: h2.text, price: double.parse(h3.text),icon: const FaIcon(FontAwesomeIcons.circleUp,color: Colors.green,size: 35)));
-                  Navigator.pushNamed(context, '/');
+                  ref.watch(bottomNavBarNotifierProvider.notifier).homeRoot();
+                  const snackBar = SnackBar(
+                    backgroundColor: Colors.green,
+                      content: Text('Başarıyla Eklendi'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
               },
             ),

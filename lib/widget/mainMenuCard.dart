@@ -15,8 +15,8 @@ class MainMenuCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        margin: const EdgeInsets.only(left: 16,right: 16,top: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
+        margin: const EdgeInsets.only(left: 8,right: 8,top: 16),
         height: 150.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),

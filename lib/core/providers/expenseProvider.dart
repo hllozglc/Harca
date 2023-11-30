@@ -24,4 +24,8 @@ class ExpenseController extends StateNotifier<List<ExpenseModel>>{
     }
     return tutar;
   }
+  void deleteExpense(int expense){
+    var newState =  state.removeAt(expense);
+    state = [newState];
+  }
  }

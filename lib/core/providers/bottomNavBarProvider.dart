@@ -33,5 +33,8 @@ class BottomNavbarController extends StateNotifier<int>{
   void homeRoot(){
     state = 0;
   }
+  void addRoot(){
+    state = 1;
+  }
 
 }

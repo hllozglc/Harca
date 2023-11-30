@@ -17,6 +17,7 @@ class _AddAlertState extends State<AddAlert> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: MyAppBar('Uyarı Ekle'),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -29,7 +30,9 @@ class _AddAlertState extends State<AddAlert> {
           children: [
             const FaIcon(FontAwesomeIcons.solidBell,color: MyColor.iconColor,size: 60,),
             Text('Henüz hiç uyarı eklenmemiş.Belli bir gelire veya gidere ulaştığınızda bildirim almak için hemen uyarı oluşturun',style: MyStyle.textStyle()),
-            const MyButton(),
+            MyButton(title: 'Oluştur',onTap: () {
+              Navigator.pushNamed(context, '/addAlertForm');
+            },),
           ],
         ),
       ),

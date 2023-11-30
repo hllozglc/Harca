@@ -12,6 +12,7 @@ class _ExpenseFilterState extends State<ExpenseFilter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: MyAppBar('Filtrele'),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:harca/view/viewAddAlert.dart';
+import 'package:harca/view/viewAddAlertForm.dart';
 import 'package:harca/view/viewAllExpense.dart';
 import 'package:harca/view/viewExpenseFilter.dart';
 import 'package:harca/view/viewHomePage.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           '/' : (context) => const MainPage(),
           '/homePage' : (context) => const HomePage(),
           '/addAlert' : (context) => const AddAlert(),
+          '/addAlertForm' : (context) => const AddAlertForm(),
           '/expenseFilter' : (context) => const ExpenseFilter(),
           '/allExpense' : (context) => const AllExpense(),
         },

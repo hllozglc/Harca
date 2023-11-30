@@ -36,8 +36,8 @@ class HomePage extends ConsumerWidget {
                 child:  Center(child: Text('${ref.watch(expenseNotifierProvider.notifier).giderTotal().toString()} TL',style: GoogleFonts.vinaSans(fontSize: 60,color: MyColor.textColor),))),
           ),
           Row(children: [
-              Expanded(child: MainMenuCard(icon: FontAwesomeIcons.solidBell,title:'Uyarı Ekle',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1,onTap: () => Navigator.pushNamed(context, '/addAlert'),)),
-              Expanded(child: MainMenuCard(icon: FontAwesomeIcons.filter, title: 'Harcama Filtrele', text: 'Harcamalarınızı Filtreleyin.',color: MyColor.cardColor2,onTap: () => Navigator.pushNamed(context, '/expenseFilter'),)),],),
+              Expanded(child: MainMenuCard(icon: FontAwesomeIcons.solidBell,title:'Uyarılar',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1,onTap: () => Navigator.pushNamed(context, '/addAlert'),)),
+              Expanded(child: MainMenuCard(icon: FontAwesomeIcons.filter, title: 'Filtrele', text: 'Harcamalarınızı Filtreleyin.',color: MyColor.cardColor2,onTap: () => Navigator.pushNamed(context, '/expenseFilter'),)),],),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
             child: Row(

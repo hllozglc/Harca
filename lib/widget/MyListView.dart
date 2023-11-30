@@ -10,15 +10,16 @@ class MyListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    var model = ref.watch(expenseNotifierProvider);
+    var model = ref.watch(expenseNotifierProvider).reversed;
+    var revModel = model.toList();
     return ListView.builder(
       itemCount: model.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(model[index].title),
-          subtitle: Text(model[index].subtitle),
-          leading: model[index].icon,
-          trailing: Text('${model[index].price.toString()} TL'),
+          title: Text(revModel[index].title),
+          subtitle: Text(revModel[index].subtitle),
+          leading: revModel[index].icon,
+          trailing: Text('${revModel[index].price.toString()} TL'),
         );
       },
     );

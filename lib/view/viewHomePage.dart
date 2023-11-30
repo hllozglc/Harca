@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:harca/constants/style.dart';
 import 'package:harca/core/providers/bottomNavBarProvider.dart';
 import 'package:harca/core/providers/expenseProvider.dart';
@@ -21,8 +22,22 @@ class HomePage extends ConsumerWidget {
       appBar: MyAppBar('Ana Sayfa'),
       body:  Column(
         children: [
-          MainMenuCard(icon: FontAwesomeIcons.solidBell,title:'Uyarı Ekle',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1,onTap: () => Navigator.pushNamed(context, '/addAlert'),),
-          MainMenuCard(icon: FontAwesomeIcons.filter, title: 'Harcama Filtrele', text: 'En az harcanan kategori,tarih aralığı,harcanan en yüksek miktar vb.',color: MyColor.cardColor2,onTap: () => Navigator.pushNamed(context, '/expenseFilter'),),
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+              decoration: ref.watch(expenseNotifierProvider.notifier).giderTotal()<0.0 ?
+              BoxDecoration(
+                  color: Colors.red[50],
+                  borderRadius: BorderRadius.circular(20)
+              ):BoxDecoration(
+                  color: Colors.green[50],
+                  borderRadius: BorderRadius.circular(20)
+              ),
+                child:  Center(child: Text('${ref.watch(expenseNotifierProvider.notifier).giderTotal().toString()} TL',style: GoogleFonts.vinaSans(fontSize: 60,color: MyColor.textColor),))),
+          ),
+          Row(children: [
+              Expanded(child: MainMenuCard(icon: FontAwesomeIcons.solidBell,title:'Uyarı Ekle',text:'Belli bir gelire veya gidere ulaştığınızda bildirim alın',color: MyColor.cardColor1,onTap: () => Navigator.pushNamed(context, '/addAlert'),)),
+              Expanded(child: MainMenuCard(icon: FontAwesomeIcons.filter, title: 'Harcama Filtrele', text: 'Harcamalarınızı Filtreleyin.',color: MyColor.cardColor2,onTap: () => Navigator.pushNamed(context, '/expenseFilter'),)),],),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 8),
             child: Row(

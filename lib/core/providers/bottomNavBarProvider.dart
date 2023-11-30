@@ -19,7 +19,8 @@ class BottomNavbarController extends StateNotifier<int>{
       case 0:return const HomePage();break;
       case 1:return const AddExpense();break;
       case 2:return const AllExpense();break;
-      default:return const HomePage();
+      default:
+        return const HomePage();
     }
   }
   void onItemTapped(int index) {

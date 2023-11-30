@@ -10,25 +10,24 @@ class InputValidators{
     if (val == null || val.isEmpty) {
       return 'Lütfen Bu Alanı Doldurun';
     }
-    final intValue = int.parse(val.toString().replaceAll(RegExp('[^0-9]'), ''));
+    final intValue = int.parse(val.toString().replaceAll(RegExp('[0-9]'), ''));
     if (intValue.toString() != val.toString().replaceAll(RegExp('^[0]+'), '')) {
-      return 'InputValidators:NumarikDeger';
+      return 'Lütfen Geçerli Bir Fiyat Girin';
     }
     return null;
   }
   static String? vergiNoRequired(String? val){
     if (val == null || val.isEmpty) {
-      return 'InputValidators:BuAlaniDoldurun';
+      return 'Lütfen Bu Alanı Doldurun';
     }
-
     final intValue = int.parse(val.toString().replaceAll(RegExp('[^0-9]'), ''));
     if (intValue.toString() != val) {
-      return 'InputValidators:NumarikDeger';
+      return 'Lütfen Geçerli Bir Fiyat Girin';
     }
 
-    if (val.length < 9 || val.length > 11) {
+    /*if (val.length < 9 || val.length > 11) {
       return 'InputValidators:VergiNumarasi';
-    }
+    }*/
     return null;
   }
   /*static String? emailRequired(String? val){

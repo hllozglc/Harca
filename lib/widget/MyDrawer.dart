@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:harca/constants/style.dart';
+import 'package:harca/core/providers/expenseProvider.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     return Drawer(
       child: ListView(
         // Remove padding
@@ -12,7 +14,7 @@ class MyDrawer extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             accountName: const Text('Halil Özgüleç'),
-            accountEmail: const Text('10.000TL'),
+            accountEmail: Text('${ref.watch(expenseNotifierProvider.notifier).giderTotal().toString()} TL'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(child: Image.network('https://oflutter.com/wp-content/uploads/2021/02/girl-profile.png', fit: BoxFit.cover, width: 90, height: 90,),),),
             decoration: const BoxDecoration(
@@ -48,7 +50,7 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: const FaIcon(FontAwesomeIcons.trash,color: Colors.red,),
             title: const Text('Verileri Sıfırla'),
-            onTap: () => null,
+            onTap: () => ref.read(expenseNotifierProvider.notifier).allClear(),
           ),
           Divider(),
           ListTile(

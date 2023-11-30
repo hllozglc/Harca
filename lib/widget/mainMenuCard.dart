@@ -17,7 +17,6 @@ class MainMenuCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         margin: const EdgeInsets.only(left: 16,right: 16,top: 16),
-        width:430.w,
         height: 150.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -27,7 +26,7 @@ class MainMenuCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(icon,size: 50,color: MyColor.iconColor.withOpacity(0.8)),
+            Icon(icon,size: 40,color: MyColor.iconColor.withOpacity(0.8)),
             Text(title, style: MyStyle.titleStyle()),
             Text(text,style: MyStyle.textStyle()),
           ],

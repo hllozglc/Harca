@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:harca/constants/style.dart';
 import 'package:harca/core/providers/bottomNavBarProvider.dart';
+import 'package:harca/core/providers/dropDownButtonProvider.dart';
 import 'package:harca/core/providers/expenseProvider.dart';
 import 'package:harca/library/InputValidators.dart';
 import 'package:harca/models/expenseModel.dart';
@@ -73,32 +74,35 @@ class _AddExpenseState extends State<AddExpense> {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         child: MytextField(label: 'Fiyat',keyboard: TextInputType.number, controller: t3,validator: InputValidators.vergiNoRequired)),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        child: InputDecorator(
-                          decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.all(7),
-                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<String>(
-                              icon: const Icon(Icons.arrow_forward_ios),
-                              style: MyStyle.titleStyle().copyWith(fontSize: 16,color: MyColor.textColor.withOpacity(0.8)),
-                              value: giderDropdownValue,
-                              items: giderDropItems.map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  giderDropdownValue=value!;
-                                });
-                              },
+                      Consumer(builder: (context, ref, child) {
+                        var giderList = ref.watch(giderDropdownProvider);
+                       return Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                          child: InputDecorator(
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.all(7),
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                icon: const Icon(Icons.arrow_drop_down),
+                                style: MyStyle.titleStyle().copyWith(fontSize: 16,color: MyColor.textColor.withOpacity(0.8)),
+                                value: giderDropdownValue,
+                                items: giderDropItems.map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    giderDropdownValue=value!;
+                                  });
+                                },
+                              ),
                             ),
                           ),
-                        ),
-                      ),
+                        );
+                      },)
                     ]
                   ),
                   Column(

@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/instance_manager.dart';
 import 'package:harca/constants/style.dart';
-import 'package:harca/core/providers/expenseProvider.dart';
+import 'package:harca/core/controller/AppDataController.dart';
 
-class MyListView extends ConsumerWidget {
+class MyListView extends StatefulWidget {
   const MyListView({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-    var model = ref.watch(expenseNotifierProvider).reversed;
+  State<MyListView> createState() => _MyListViewState();
+}
+
+class _MyListViewState extends State<MyListView> {
+  AppDataController controller = Get.find<AppDataController>();
+  @override
+  Widget build(BuildContext context) {
+    var model = controller.expens.reversed;
     var revModel = model.toList();
     return ListView.builder(
       itemCount: model.length,
@@ -18,7 +24,7 @@ class MyListView extends ConsumerWidget {
         DateTime today = DateTime.now();
         String date = "${today.day}/${today.month}/${today.year}";
         return Dismissible(
-          onDismissed: (direction) => ref.watch(expenseNotifierProvider.notifier).deleteExpense(index),
+          onDismissed: (direction) => controller.deleteExpens(revModel[index]),
           direction: DismissDirection.endToStart,
           background: Container(alignment:Alignment.centerRight,color: Colors.red,child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:harca/core/controller/MainBindings.dart';
 import 'package:harca/view/viewAddAlert.dart';
 import 'package:harca/view/viewAddAlertForm.dart';
-import 'package:harca/view/viewAllExpense.dart';
 import 'package:harca/view/viewExpenseFilter.dart';
-import 'package:harca/view/viewHomePage.dart';
 import 'package:harca/view/viewMainPage.dart';
 
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  MainBindings().dependencies();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,20 +21,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(430, 932),
-      builder: (context, child) => MaterialApp(
+      builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Harca',
         initialRoute: '/',
-        routes: {
-          '/' : (context) => const MainPage(),
-          '/homePage' : (context) => const HomePage(),
-          '/addAlert' : (context) => const AddAlert(),
-          '/addAlertForm' : (context) => const AddAlertForm(),
-          '/expenseFilter' : (context) => const ExpenseFilter(),
-          '/allExpense' : (context) => const AllExpense(),
-        },
+        getPages: [
+          GetPage(name: mainPage, page: () => const MainPage(),),
+          GetPage(name: addAlert, page: () => const AddAlert(),),
+          GetPage(name: addAlertForm, page: () => const AddAlertForm(),),
+          GetPage(name: expenseFilter, page: () => const ExpenseFilter(),)
+        ],
       ),
     );
   }
 }
 
+String get mainPage => '/';
+String get addAlert => '/addAlert';
+String get addAlertForm => '/addAlertForm';
+String get expenseFilter => '/expenseFilter';

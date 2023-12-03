@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:harca/constants/style.dart';
-import 'package:harca/core/providers/alertProvider.dart';
+import 'package:harca/core/controller/AppDataController.dart';
+import 'package:harca/main.dart';
 import 'package:harca/models/alertModel.dart';
-import 'package:harca/view/viewAddAlert.dart';
 import 'package:harca/widget/Methods.dart';
 import 'package:harca/widget/MyTextField.dart';
 
@@ -16,6 +16,7 @@ class AddAlertForm extends StatefulWidget {
 }
 
 class _AddAlertFormState extends State<AddAlertForm> {
+  AppDataController appCtrl = Get.find<AppDataController>();
   TextEditingController t1 = TextEditingController();
   TextEditingController t2 = TextEditingController();
   @override
@@ -33,15 +34,14 @@ class _AddAlertFormState extends State<AddAlertForm> {
           ],
         ),
       ),
-      floatingActionButton: Consumer(
-        builder: (context, ref, child) => FloatingActionButton(
-          onPressed: () {
-            ref.watch(alertNotifierProvider.notifier).addAlert(AlertModel(t1.text, double.parse(t2.text)));
-            Navigator.pushNamed(context, '/addAlert');
-          },
-          backgroundColor: MyColor.iconColor,
-          child: const FaIcon(FontAwesomeIcons.plus),
-        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          appCtrl.addALert(AlertModel(t1.text, double.parse(t2.text), t1.text));
+          Get.offNamed(mainPage);
+          Get.snackbar('Başarılı', 'Uyarı Başarılı Bir Şekilde Kaydedildi');
+        },
+        backgroundColor: MyColor.iconColor,
+        child: const FaIcon(FontAwesomeIcons.plus),
       ),
     );
   }

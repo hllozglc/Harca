@@ -4,7 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:harca/constants/style.dart';
 
 class EmptyData extends StatelessWidget {
-  const EmptyData({super.key});
+  const EmptyData({super.key, required this.title});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class EmptyData extends StatelessWidget {
           children: [
             FaIcon(FontAwesomeIcons.circleExclamation,size: 50,color: MyColor.iconColor.withOpacity(0.3),),
             SizedBox(height: 20.h),
-            Text('Henüz Hiç Kayıt Yok!',style: MyStyle.titleStyle().copyWith(color: MyColor.titleColor.withOpacity(0.3)),)
+            Text(title,style: MyStyle.titleStyle().copyWith(color: MyColor.titleColor.withOpacity(0.3)),)
           ],
         ),
       )

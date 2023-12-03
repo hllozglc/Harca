@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:harca/widget/MyDrawer.dart';
+import 'package:get/get.dart';
+import 'package:harca/core/controller/AppDataController.dart';
 import 'package:harca/widget/MyListView.dart';
+import 'package:harca/widget/emtyData.dart';
 
-import '../core/providers/expenseProvider.dart';
 import '../widget/Methods.dart';
-import '../widget/emtyData.dart';
 
-class AllExpense extends ConsumerWidget {
+class AllExpense extends StatefulWidget {
   const AllExpense({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  State<AllExpense> createState() => _AllExpenseState();
+}
+
+class _AllExpenseState extends State<AllExpense> {
+  AppDataController appCtrl = Get.find<AppDataController>();
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
       backgroundColor: Colors.white,
       appBar: MyAppBar('Harcamalar'),
-      body:ref.watch(expenseNotifierProvider).isEmpty ? const EmptyData() :const MyListView(),
+      body: GetX<AppDataController>(builder: (AppDataController controller) {
+        return appCtrl.expens.isEmpty ?  const EmptyData(title: 'Henüz Hiç Kayıt Yok!') : const MyListView();
+      },)
     );
   }
 }

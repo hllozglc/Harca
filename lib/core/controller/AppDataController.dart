@@ -1,9 +1,19 @@
 import 'package:get/get.dart';
+import 'package:harca/models/cardModel.dart';
 
 import '../../models/alertModel.dart';
 import '../../models/expenseModel.dart';
 
 class AppDataController extends GetxController{
+  var selectedCard ="".obs;
+  List<CardModel> cardList = <CardModel>[].obs;
+  void addCard(CardModel cardModel){
+    cardList.add(cardModel);
+  }
+  void deleteCard(CardModel cardModel){
+    cardList.remove(cardModel);
+  }
+  // uyarılar
  List<AlertModel> alertList =<AlertModel>[].obs;
  void addALert(AlertModel alertModel){
    alertList.add(alertModel);
@@ -15,6 +25,9 @@ class AppDataController extends GetxController{
   var selectedItem = "".obs;
   void upDateSelectedItem(value){
     selectedItem.value = value;
+  }
+  void addCategory(String category){
+    categories.add(category);
   }
   List<String> categories = <String>[
     'Temel Giderler',
@@ -34,7 +47,6 @@ class AppDataController extends GetxController{
     'Hediye ve Bağışlar',
     'Diğer Gelir Kaynakları'
   ].obs;
-
 
   //Gelir Gider
   RxList<ExpenseModel> expens = <ExpenseModel>[].obs;

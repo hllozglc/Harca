@@ -41,6 +41,17 @@ class _MyDrawerState extends State<MyDrawer> {
           ),
           const Divider(),
           ListTile(
+            leading: const FaIcon(FontAwesomeIcons.creditCard,color: MyColor.iconColor,),
+            title: const Text('Kart Ekle'),
+            onTap: () => Get.toNamed(addCard),
+          ),
+          ListTile(
+            leading: const FaIcon(FontAwesomeIcons.mendeley,color: MyColor.iconColor,),
+            title: const Text('Kategori Ekle'),
+            onTap: () => Get.toNamed(addCategory),
+          ),
+          const Divider(),
+          ListTile(
             leading: const FaIcon(FontAwesomeIcons.gear,color: MyColor.iconColor,),
             title: const Text('Ayarlar'),
             onTap: () => null,

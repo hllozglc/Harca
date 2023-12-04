@@ -10,7 +10,7 @@ AppBar MyAppBar(String title,{void Function()? onTap,IconData? icon}) {
     backgroundColor: Colors.white,
     title: Text(title,style: const TextStyle(color: MyColor.textColor),),
     //leading:Builder(builder: (context) {return IconButton(onPressed: (){},icon:const Icon(Icons.menu,color: MyColor.iconColor,),);},),
-    actions: [IconButton(onPressed: onTap, icon: FaIcon(icon),color: MyColor.iconColor)],
+    actions: [IconButton(onPressed: onTap, icon: FaIcon(icon,color: MyColor.iconColor,),color: MyColor.iconColor)],
   );
 }
 

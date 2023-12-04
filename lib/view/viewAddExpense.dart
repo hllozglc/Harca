@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:harca/constants/style.dart';
 import 'package:harca/core/controller/AppDataController.dart';
 import 'package:harca/library/InputValidators.dart';
+import 'package:harca/models/cardModel.dart';
 import 'package:harca/models/expenseModel.dart';
 import 'package:harca/widget/Methods.dart';
 

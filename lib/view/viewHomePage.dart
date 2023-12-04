@@ -27,8 +27,18 @@ class _HomePageState extends State<HomePage> {
       double alertPrice = appCtrl.alertList.first.price!;
       double totalExpense = appCtrl.totalExpense() ?? 0;
 
-      if (alertPrice > totalExpense) {
-        return Colors.green;
+      if (alertPrice < 0) {
+        if(alertPrice > totalExpense) {
+          return Colors.red;
+        }else{
+          return Colors.green;
+        }
+      }else if (alertPrice > 0){
+        if(alertPrice < totalExpense) {
+          return Colors.red;
+        }else{
+          return Colors.green;
+        }
       }
     }
     return Colors.red;
@@ -44,30 +54,39 @@ class _HomePageState extends State<HomePage> {
         return  Column(
           children: [
             Expanded(
-              child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
-                  decoration:  BoxDecoration(color: appCtrl.totalExpense() == null ? Colors.grey[100] : appCtrl.totalExpense()! > 0 ? Colors.green[50]: Colors.red[50], borderRadius: BorderRadius.circular(20),border: Border.all(color: mainPriceText(),width: 5)),
-                  child: appCtrl.alertList.isEmpty ? Center(
-                    child: Text('${appCtrl.totalExpense()??"0"} TL',
-                      style: GoogleFonts.vinaSans(
-                        fontSize: 60,
-                        color: mainPriceText(),
-                      ),
-                    ),
-                  ) : Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('${appCtrl.totalExpense()??"0"} TL',
+              child: Stack(
+                children: [
+                  Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+                      decoration:  BoxDecoration(color: appCtrl.totalExpense() == null ? Colors.grey[100] : appCtrl.totalExpense()! > 0 ? Colors.green[50]: Colors.red[50], borderRadius: BorderRadius.circular(20),border: Border.all(color: mainPriceText(),width: 5)),
+                      child: appCtrl.alertList.isEmpty ? Center(
+                        child: Text('${appCtrl.totalExpense()??"0"} TL',
                           style: GoogleFonts.vinaSans(
                             fontSize: 60,
                             color: mainPriceText(),
                           ),
                         ),
-                        Text('Uyarı Oluşturuldu Uyarı Tartarı ${appCtrl.alertList.first.price} TL')
-                      ],
-                    ),
-                  ) ,
+                      ) : Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('${appCtrl.totalExpense()??"0"} TL',
+                              style: GoogleFonts.vinaSans(
+                                fontSize: 60,
+                                color: mainPriceText(),
+                              ),
+                            ),
+                            appCtrl.totalExpense() == null ? Text(' ') :
+                            Text('Uyarı Oluşturuldu Uyarıya kalan harcama: ${appCtrl.alertList.first.price - appCtrl.totalExpense()!} TL')
+                          ],
+                        ),
+                      ) ,
+                  ),
+                  appCtrl.alertList.isNotEmpty ? const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                    child: FaIcon(FontAwesomeIcons.solidBell,color: MyColor.iconColor,size: 20,),
+                  ) : Container(),
+                ],
               ),
             ),
             Row(children: [

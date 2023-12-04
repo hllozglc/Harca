@@ -22,7 +22,7 @@ class _AddAlertState extends State<AddAlert> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: MyAppBar('Uyarı Ekle',icon: FontAwesomeIcons.plus,onTap: () => Get.toNamed(addAlertForm),),
+      appBar: MyAppBar('Uyarı Ekle',),
       body: GetX<AppDataController>(
         builder: (AppDataController controller) {
         return appCtrl.alertList.isEmpty ? Container(

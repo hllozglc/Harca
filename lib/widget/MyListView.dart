@@ -35,8 +35,8 @@ class _MyListViewState extends State<MyListView> {
             alignment: Alignment.bottomRight,
             children: [
               ListTile(
-                title: Text(revModel[index].title),
-                subtitle: Text(revModel[index].subtitle),
+                title: Text(revModel[index].title!),
+                subtitle: Text(revModel[index].subtitle!),
                 leading: revModel[index].icon,
                 trailing: Text('${revModel[index].price.toString()} TL'),
               ),

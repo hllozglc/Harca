@@ -19,7 +19,7 @@ class _ExpenseFilterState extends State<ExpenseFilter> {
   @override
   Widget build(BuildContext context) {
     List<ExpenseModel> filteredList = appCtrl.expens.where((expense) => expense.subtitle == appCtrl.selectedItem.value).toList();
-    double total = filteredList.fold(0, (previous, current) => previous + current.price);
+    double total = filteredList.fold(0, (previous, current) => previous + current.price!);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: MyAppBar('Filtrele'),
@@ -53,8 +53,8 @@ class _ExpenseFilterState extends State<ExpenseFilter> {
               itemBuilder:(context, index) {
                 var model = filteredList[index];
                 return ListTile(
-                  title: Text(model.title),
-                  subtitle: Text(model.subtitle),
+                  title: Text(model.title!),
+                  subtitle: Text(model.subtitle!),
                   leading: model.icon,
                   trailing: Text('${model.price.toString()} TL'),
                   );

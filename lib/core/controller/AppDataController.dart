@@ -60,7 +60,7 @@ class AppDataController extends GetxController{
     for(int i=0;i<expens.length;i++){
       double tutar = 0;
       for(int i = 0 ; i<expens.length; i++){
-        tutar += expens[i].price;
+        tutar += expens[i].price!;
       }
       return tutar;
     }

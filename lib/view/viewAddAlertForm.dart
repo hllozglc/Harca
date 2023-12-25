@@ -22,8 +22,8 @@ class _AddAlertFormState extends State<AddAlertForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MyAppBar('Uyarı Oluştur'),
+      backgroundColor: MyColor.bgColor,
+      appBar: MyAppBar(title: 'Uyarı Oluştur'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 16),
         child: Column(

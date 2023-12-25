@@ -8,8 +8,9 @@ class ExpenseModel {
   String? subtitle;
   double? price;
   FaIcon? icon;
+  DateTime? date;
 
-  ExpenseModel({this.title, this.subtitle, this.price, this.icon});
+  ExpenseModel({this.title, this.subtitle, this.price, this.icon,this.date});
   ExpenseModel.fromMap(Map<String, dynamic> map) {
     id = map['id'];
     title = map['title'];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:harca/constants/style.dart';
 import 'package:harca/core/controller/AppDataController.dart';
 import 'package:harca/widget/MyListView.dart';
 import 'package:harca/widget/emtyData.dart';
@@ -18,8 +19,8 @@ class _AllExpenseState extends State<AllExpense> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MyAppBar('Harcamalar'),
+      backgroundColor: MyColor.bgColor,
+      appBar: MyAppBar(title: 'Harcamalar',bgColor: MyColor.darkblue,titleColor: Colors.white),
       body: GetX<AppDataController>(builder: (AppDataController controller) {
         return appCtrl.expens.isEmpty ?  const EmptyData(title: 'Henüz Hiç Kayıt Yok!') : const MyListView();
       },)

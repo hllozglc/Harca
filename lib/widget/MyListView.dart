@@ -21,8 +21,8 @@ class _MyListViewState extends State<MyListView> {
     return ListView.builder(
       itemCount: model.length,
       itemBuilder: (context, index) {
-        DateTime today = DateTime.now();
-        String date = "${today.day}/${today.month}/${today.year}";
+        var today = revModel[index].date;
+        String date = "${today!.day}/${today!.month}/${today!.year}";
         return Dismissible(
           onDismissed: (direction) => controller.deleteExpens(revModel[index]),
           direction: DismissDirection.endToStart,

@@ -21,8 +21,8 @@ class _AddCategoryState extends State<AddCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MyAppBar('Kategori Ekle'),
+      backgroundColor: MyColor.bgColor,
+      appBar: MyAppBar(title: 'Kategori Ekle'),
       body: Form(
         key: _formKey,
         child: Padding(

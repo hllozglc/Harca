@@ -5,6 +5,8 @@ import '../../models/alertModel.dart';
 import '../../models/expenseModel.dart';
 
 class AppDataController extends GetxController{
+  var userName = '';
+  var userMail = '';
   var selectedCard ="".obs;
   List<CardModel> cardList = <CardModel>[].obs;
   void addCard(CardModel cardModel){
@@ -38,8 +40,6 @@ class AppDataController extends GetxController{
     'Kişisel Bakım',
     'Giyim ve Ayakkabı',
     'Eğitim ve Gelişim',
-    'Ev Giderleri',
-    'Finansal Harcamalar',
     'Maaş Ve Ücretler',
     'Yatırım Gelirleri',
     'Kira Geliri',
@@ -56,14 +56,12 @@ class AppDataController extends GetxController{
   void deleteExpens(ExpenseModel expense){
     expens.remove(expense);
   }
-  double? totalExpense (){
-    for(int i=0;i<expens.length;i++){
-      double tutar = 0;
-      for(int i = 0 ; i<expens.length; i++){
-        tutar += expens[i].price!;
-      }
-      return tutar;
+  double? totalExpense() {
+    double total = 0;
+    for (int i = 0; i < expens.length; i++) {
+      total += expens[i].price!;
     }
+    return total;
   }
   void allRemoveExpense(){
     expens.clear();

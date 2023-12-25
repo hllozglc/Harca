@@ -7,8 +7,12 @@ import 'package:harca/view/viewAddAlertForm.dart';
 import 'package:harca/view/viewAddCardForm.dart';
 import 'package:harca/view/viewAddCardList.dart';
 import 'package:harca/view/viewAddCategory.dart';
+import 'package:harca/view/viewCategoryChart.dart';
+import 'package:harca/view/viewExpenseChart.dart';
 import 'package:harca/view/viewExpenseFilter.dart';
 import 'package:harca/view/viewMainPage.dart';
+import 'package:harca/view/viewReportingList.dart';
+import 'package:harca/view/viewSplash.dart';
 
 
 void main() {
@@ -29,6 +33,7 @@ class MyApp extends StatelessWidget {
         title: 'Harca',
         initialRoute: '/',
         getPages: [
+          GetPage(name: splash, page: () => const Splash(),),
           GetPage(name: mainPage, page: () => const MainPage(),),
           GetPage(name: addAlert, page: () => const AddAlert(),),
           GetPage(name: addAlertForm, page: () => const AddAlertForm(),),
@@ -36,16 +41,23 @@ class MyApp extends StatelessWidget {
           GetPage(name: addCard, page: () => const AddCard(),),
           GetPage(name: addCardForm, page: () => const CardForm(),),
           GetPage(name: addCategory, page: () => const AddCategory(),),
+          GetPage(name: reportingList, page: () => const ReportingList(),),
+          GetPage(name: categoryChart, page: () => const CategoryChart(),),
+          GetPage(name: expenseChart, page: () => const ExpenseChart(),),
         ],
       ),
     );
   }
 }
 
-String get mainPage => '/';
+String get splash => '/';
+String get mainPage => '/main';
 String get addAlert => '/addAlert';
 String get addAlertForm => '/addAlertForm';
 String get expenseFilter => '/expenseFilter';
 String get addCard => '/addCard';
 String get addCardForm => '/addCardForm';
 String get addCategory => '/addCategory';
+String get reportingList => '/reportingList';
+String get categoryChart => '/chategoryChart';
+String get expenseChart => '/expenseChart';

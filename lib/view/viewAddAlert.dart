@@ -21,8 +21,8 @@ class _AddAlertState extends State<AddAlert> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MyAppBar('Uyarı Ekle',),
+      backgroundColor: MyColor.bgColor,
+      appBar: MyAppBar(title: 'Uyarı Ekle'),
       body: GetX<AppDataController>(
         builder: (AppDataController controller) {
         return appCtrl.alertList.isEmpty ? Container(

@@ -16,7 +16,6 @@ class _MyDrawerState extends State<MyDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        // Remove padding
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
@@ -49,6 +48,11 @@ class _MyDrawerState extends State<MyDrawer> {
             leading: const FaIcon(FontAwesomeIcons.mendeley,color: MyColor.iconColor,),
             title: const Text('Kategori Ekle'),
             onTap: () => Get.toNamed(addCategory),
+          ),
+          ListTile(
+            leading: const FaIcon(FontAwesomeIcons.chartLine,color: MyColor.iconColor,),
+            title:const Text('Grafik ve Raporlama'),
+            onTap: () => Get.toNamed(reportingList),
           ),
           const Divider(),
           ListTile(

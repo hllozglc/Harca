@@ -20,8 +20,8 @@ class _AddCardState extends State<AddCard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MyAppBar('Kartlarım',icon: FontAwesomeIcons.plus,onTap: () => Get.toNamed(addCardForm),),
+      backgroundColor: MyColor.bgColor,
+      appBar: MyAppBar(title: 'Kartlarım',icon: FontAwesomeIcons.plus,onTap: () => Get.toNamed(addCardForm),),
       body: GetX<AppDataController>(
         builder: (AppDataController controller) {
         return controller.cardList.isEmpty ? Container(

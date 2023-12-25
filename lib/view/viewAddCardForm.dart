@@ -27,8 +27,8 @@ class _CardFormState extends State<CardForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MyAppBar('Kart Ekle'),
+      backgroundColor: MyColor.bgColor,
+      appBar: MyAppBar(title: 'Kart Ekle'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
         child: Form(

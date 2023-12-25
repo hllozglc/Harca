@@ -15,21 +15,16 @@ class MainMenuCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 8),
-        margin: const EdgeInsets.only(left: 8,right: 8,top: 16),
-        height: 150.h,
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: color,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Icon(icon,size: 40,color: MyColor.iconColor.withOpacity(0.8)),
-            Text(title, style: MyStyle.titleStyle()),
-            Text(text,style: MyStyle.textStyle()),
-          ],
+        child: ListTile(
+          title: Text(title, style: MyStyle.titleStyle()),
+          leading: Icon(icon,size: 40),
+          subtitle: Text(text,style: MyStyle.textStyle()),
         ),
       ),
     );

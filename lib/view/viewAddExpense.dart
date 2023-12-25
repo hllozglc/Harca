@@ -48,70 +48,75 @@ class _AddExpenseState extends State<AddExpense> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: MyAppBar('Ekle'),
+      backgroundColor: MyColor.bgColor,
+      appBar: MyAppBar(title: 'Gelir/Gider Ekle',bgColor: MyColor.darkblue,titleColor: Colors.white),
       body: Form(
         key: _formKey,
-        child: Column(children: [
-          SizedBox(height: 10.h),
-          Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: MytextField(
-                  label: 'Başlık',
-                  controller: adi,
-                  validator: InputValidators.textRequired)),
-          Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: MytextField(
-                  label: 'Fiyat',
-                  keyboard: TextInputType.number,
-                  controller: tutar,
-                  validator: InputValidators.vergiNoRequired)),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: InputDecorator(
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.all(7),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20))),
-              child: DropdownButtonHideUnderline(
-                  child: Obx(() => DropdownButton<String>(
-                    hint: const Text('Kategori Seçiniz...'),
-                    icon: const Icon(Icons.arrow_drop_down),
-                    style: MyStyle.titleStyle().copyWith(fontSize: 16, color: MyColor.textColor.withOpacity(0.8)),
-                    value: appCtrl.selectedItem.value==""?null:appCtrl.selectedItem.value,
-                    items: appCtrl.categories.map<DropdownMenuItem<String>>((String value) {return DropdownMenuItem<String>(value: value, child: Text(value),);}).toList(),
-                    onChanged: (newValue) {
-                      appCtrl.upDateSelectedItem(newValue.toString());
-                    },
-                  ),)
-              ),
-            ),
-          ),
-          SizedBox(height: 10.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
             children: [
-            _buildButton(title: 'Gider',color: Colors.red,onTap: () {
-              if(_formKey.currentState!.validate()) {
-                appCtrl.addExpens(ExpenseModel(title: adi.text, subtitle: appCtrl.selectedItem.value, price: double.parse(tutar.text)*-1,icon: const FaIcon(FontAwesomeIcons.circleDown,color: Colors.red,size: 35)));
-                Get.snackbar('Gider', 'İşleminiz başarılı bir şekilde kaydedildi',icon: const Padding(padding: EdgeInsets.symmetric(horizontal: 8), child: FaIcon(FontAwesomeIcons.circleDown,color: Colors.red,size: 35),));
-                adi.clear();
-                tutar.clear();
-                FocusManager.instance.primaryFocus!.unfocus();
-              }
-            }),
-            _buildButton(title: 'Gelir',color: Colors.green,onTap: () {
-              if(_formKey.currentState!.validate()) {
-                appCtrl.addExpens(ExpenseModel(title: adi.text, subtitle: appCtrl.selectedItem.value, price: double.parse(tutar.text)*1,icon: const FaIcon(FontAwesomeIcons.circleUp,color: Colors.green,size: 35)));
-                Get.snackbar('Gelir', 'İşleminiz başarılı bir şekilde kaydedildi',icon: const Padding(padding: EdgeInsets.symmetric(horizontal: 8), child: FaIcon(FontAwesomeIcons.circleUp,color: Colors.green,size: 35),));
-                adi.clear();
-                tutar.clear();
-                FocusManager.instance.primaryFocus!.unfocus();
-              }
-            }),
-          ]),
-        ]),
+              Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: MytextField(
+                      label: 'Başlık',
+                      controller: adi,
+                      validator: InputValidators.textRequired)),
+              Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: MytextField(
+                      label: 'Fiyat',
+                      keyboard: TextInputType.number,
+                      controller: tutar,
+                      validator: InputValidators.vergiNoRequired)),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: InputDecorator(
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.all(7),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20))),
+                  child: DropdownButtonHideUnderline(
+                      child: Obx(() => DropdownButton<String>(
+                        hint: const Text('Kategori Seçiniz...'),
+                        icon: const Icon(Icons.arrow_drop_down),
+                        style: MyStyle.titleStyle().copyWith(fontSize: 16, color: MyColor.textColor.withOpacity(0.8)),
+                        value: appCtrl.selectedItem.value==""?null:appCtrl.selectedItem.value,
+                        items: appCtrl.categories.map<DropdownMenuItem<String>>((String value) {return DropdownMenuItem<String>(value: value, child: Text(value),);}).toList(),
+                        onChanged: (newValue) {
+                          appCtrl.upDateSelectedItem(newValue.toString());
+                        },
+                      ),)
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.h),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildButton(title: 'Gider',color: Colors.red,onTap: () {
+                      if(_formKey.currentState!.validate()) {
+                        appCtrl.addExpens(ExpenseModel(title: adi.text,subtitle: appCtrl.selectedItem.value, price: double.parse(tutar.text)*-1, icon: const FaIcon(FontAwesomeIcons.circleDown,color: Colors.red,size: 35), date: DateTime.now(),
+                        ));
+                        Get.snackbar('Gider', 'İşleminiz başarılı bir şekilde kaydedildi',icon: const Padding(padding: EdgeInsets.symmetric(horizontal: 8), child: FaIcon(FontAwesomeIcons.circleDown,color: Colors.red,size: 35),));
+                        adi.clear();
+                        tutar.clear();
+                        FocusManager.instance.primaryFocus!.unfocus();
+                      }
+                    }),
+                    _buildButton(title: 'Gelir',color: Colors.green,onTap: () {
+                      if(_formKey.currentState!.validate()) {
+                        appCtrl.addExpens(ExpenseModel(title: adi.text, subtitle: appCtrl.selectedItem.value, price: double.parse(tutar.text)*1,icon: const FaIcon(FontAwesomeIcons.circleUp,color: Colors.green,size: 35),date: DateTime.now()));
+                        Get.snackbar('Gelir', 'İşleminiz başarılı bir şekilde kaydedildi',icon: const Padding(padding: EdgeInsets.symmetric(horizontal: 8), child: FaIcon(FontAwesomeIcons.circleUp,color: Colors.green,size: 35),));
+                        adi.clear();
+                        tutar.clear();
+                        FocusManager.instance.primaryFocus!.unfocus();
+                      }
+                    }),
+                  ]),
+            ],
+          ),
+        ),
       ),
     );
   }

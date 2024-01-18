@@ -27,19 +27,23 @@ class _AddCategoryState extends State<AddCategory> {
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: MytextField(label: 'Kategori Adı',controller:name,validator: InputValidators.textRequired,),
+          child: MytextField(label: 'Kategori Adı', controller: name, validator: InputValidators.textRequired),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: MyColor.iconColor,
         onPressed: () {
-          if(_formKey.currentState!.validate()){
+          if (_formKey.currentState!.validate()) {
             appCtrl.addCategory(name.text);
             Get.back();
             Get.snackbar('Başarılı', 'Başarıyla Eklendi');
             name.clear();
           }
-      },child: const FaIcon(FontAwesomeIcons.plus,),),
+        },
+        child: const FaIcon(
+          FontAwesomeIcons.plus,
+        ),
+      ),
     );
   }
 }

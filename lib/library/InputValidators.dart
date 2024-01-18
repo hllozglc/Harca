@@ -1,12 +1,12 @@
-class InputValidators{
-
-  static String? textRequired(String? val){
+class InputValidators {
+  static String? textRequired(String? val) {
     if (val == null || val.isEmpty) {
       return 'Lütfen Bu Alanı Doldurun';
     }
     return null;
   }
-  static String? intRequired(String? val){
+
+  static String? intRequired(String? val) {
     if (val == null || val.isEmpty) {
       return 'Lütfen Bu Alanı Doldurun';
     }
@@ -16,7 +16,8 @@ class InputValidators{
     }
     return null;
   }
-  static String? vergiNoRequired(String? val){
+
+  static String? vergiNoRequired(String? val) {
     if (val == null || val.isEmpty) {
       return 'Lütfen Bu Alanı Doldurun';
     }
@@ -48,5 +49,4 @@ class InputValidators{
     }
     return null;
   }*/
-
 }

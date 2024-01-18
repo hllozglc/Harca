@@ -19,11 +19,12 @@ class _AllExpenseState extends State<AllExpense> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColor.bgColor,
-      appBar: MyAppBar(title: 'Harcamalar',bgColor: MyColor.darkblue,titleColor: Colors.white),
-      body: GetX<AppDataController>(builder: (AppDataController controller) {
-        return appCtrl.expens.isEmpty ?  const EmptyData(title: 'Henüz Hiç Kayıt Yok!') : const MyListView();
-      },)
-    );
+        backgroundColor: MyColor.bgColor,
+        appBar: MyAppBar(title: 'Harcamalar', bgColor: MyColor.primaryColor, titleColor: Colors.white),
+        body: GetX<AppDataController>(
+          builder: (AppDataController controller) {
+            return appCtrl.expens.isEmpty ? const EmptyData(title: 'Henüz Hiç Kayıt Yok!') : const MyListView();
+          },
+        ));
   }
 }

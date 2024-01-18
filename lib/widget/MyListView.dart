@@ -22,14 +22,21 @@ class _MyListViewState extends State<MyListView> {
       itemCount: model.length,
       itemBuilder: (context, index) {
         var today = revModel[index].date;
-        String date = "${today!.day}/${today!.month}/${today!.year}";
+        String date = "${today!.day}/${today.month}/${today.year}";
         return Dismissible(
           onDismissed: (direction) => controller.deleteExpens(revModel[index]),
           direction: DismissDirection.endToStart,
-          background: Container(alignment:Alignment.centerRight,color: Colors.red,child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Icon(Icons.delete,color: Colors.white,),
-          ),),
+          background: Container(
+            alignment: Alignment.centerRight,
+            color: Colors.red,
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Icon(
+                Icons.delete,
+                color: Colors.white,
+              ),
+            ),
+          ),
           key: UniqueKey(),
           child: Stack(
             alignment: Alignment.bottomRight,
@@ -42,7 +49,10 @@ class _MyListViewState extends State<MyListView> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Text(date.toString(),style: MyStyle.textStyle().copyWith(fontSize: 12),),
+                child: Text(
+                  date.toString(),
+                  style: MyStyle.textStyle().copyWith(fontSize: 12),
+                ),
               )
             ],
           ),

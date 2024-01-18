@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/style.dart';
 
 class MyButton extends StatelessWidget {
-  const MyButton({super.key, required this.title, this.onTap,});
+  const MyButton({super.key, required this.title, this.onTap});
   final String title;
   final void Function()? onTap;
 
@@ -15,10 +15,17 @@ class MyButton extends StatelessWidget {
       child: Container(
         width: 430.w,
         height: 45.h,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: MyColor.buttonColor),
-        child:Center(child: Text(title,style: MyStyle.titleStyle()?.copyWith(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w600),)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: MyColor.buttonColor),
+        child: Center(
+          child: Text(
+            title,
+            style: MyStyle.titleStyle().copyWith(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
       ),
     );
   }

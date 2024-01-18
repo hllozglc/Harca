@@ -6,8 +6,6 @@ import 'package:harca/view/viewAddExpense.dart';
 import 'package:harca/view/viewAllExpense.dart';
 import 'package:harca/view/viewHomePage.dart';
 
-
-
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
@@ -19,61 +17,79 @@ class _MainPageState extends State<MainPage> {
   int _pageIndex = 0;
   Widget getPages() {
     switch (_pageIndex) {
-      case 0:return const HomePage();break;
-      case 1:return const AddExpense();break;
-      case 2:return const AllExpense();break;
+      case 0:
+        return const HomePage();
+      case 1:
+        return const AddExpense();
+      case 2:
+        return const AllExpense();
       default:
         return const HomePage();
     }
   }
+
   void onItemTapped(int value) {
     setState(() {
       _pageIndex = value;
     });
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: getPages(),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+      bottomNavigationBar: BottomAppBar(
         elevation: 1,
-        unselectedLabelStyle: GoogleFonts.rubik(fontSize: 12),
-        selectedLabelStyle: GoogleFonts.rubik(fontSize: 16,fontWeight: FontWeight.w500),
-        selectedItemColor: MyColor.textColor,
-        currentIndex: _pageIndex,
-        onTap: (value) {
-         onItemTapped(value);
-        },
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            label: 'Ana Sayfa',
-            icon: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: FaIcon(FontAwesomeIcons.house,color: MyColor.navBarIconColor),
+        color: MyColor.primaryColor,
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 20,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            MaterialButton(
+              onPressed: () {
+                setState(() {
+                  _pageIndex = 0;
+                });
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FaIcon(FontAwesomeIcons.house, color: _pageIndex == 0 ? MyColor.iconColor : MyColor.bgColor),
+                  Text('Ana Sayfa', style: TextStyle(color: _pageIndex == 0 ? MyColor.iconColor : MyColor.bgColor)),
+                ],
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Ekle',
-            icon: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: FaIcon(FontAwesomeIcons.plus,color: MyColor.navBarIconColor,size: 30,),
+            MaterialButton(
+              onPressed: () {
+                setState(() {
+                  _pageIndex = 2;
+                });
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FaIcon(FontAwesomeIcons.list, color: _pageIndex == 2 ? MyColor.iconColor : MyColor.bgColor),
+                  Text('Harcamalar', style: TextStyle(color: _pageIndex == 2 ? MyColor.iconColor : MyColor.bgColor)),
+                ],
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Harcamalar',
-            icon: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: FaIcon(FontAwesomeIcons.list,color: MyColor.navBarIconColor),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: _pageIndex == 1 ? MyColor.iconColor : MyColor.primaryColor,
+        child: const FaIcon(
+          FontAwesomeIcons.plus,
+          color: MyColor.bgColor,
+        ),
+        onPressed: () {
+          setState(() {
+            _pageIndex = 1;
+          });
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
-
-
-
-

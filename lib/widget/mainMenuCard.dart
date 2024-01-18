@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/style.dart';
 
 class MainMenuCard extends StatelessWidget {
-  const MainMenuCard({super.key, required this.icon, required this.title, required this.text, required this.color,required this.onTap});
+  const MainMenuCard({super.key, required this.icon, required this.title, required this.text, required this.color, required this.onTap});
   final IconData icon;
   final String title;
   final String text;
@@ -23,8 +22,8 @@ class MainMenuCard extends StatelessWidget {
         ),
         child: ListTile(
           title: Text(title, style: MyStyle.titleStyle()),
-          leading: Icon(icon,size: 40),
-          subtitle: Text(text,style: MyStyle.textStyle()),
+          leading: Icon(icon, size: 40),
+          subtitle: Text(text, style: MyStyle.textStyle()),
         ),
       ),
     );

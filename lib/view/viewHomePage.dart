@@ -80,7 +80,8 @@ class _HomePageState extends State<HomePage> {
                                           style: MyStyle.titleStyle().copyWith(
                                             color: Colors.white,
                                             fontSize: 35,
-                                          )),
+                                          ),
+                                      ),
                                     ],
                                   ),
                                 ]),
